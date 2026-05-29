@@ -46,5 +46,9 @@ public class Account {
             throw new IllegalArgumentException("Invalid amount! Deposit a valid amount");
         }
     }
+    @Override
+    public String toString() {
+        return this.name + "," + this.balance;
+    }
 }
 

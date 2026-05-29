@@ -1,7 +1,9 @@
 package com.bank.command;
 
 import com.bank.Account;
+import com.bank.persistence.FilePersistenceManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -20,6 +22,12 @@ public class CreateCommand implements ATMCommand{
                 obj = new Account(name, Double.parseDouble(amount));
                 registry.put(name, obj);
                 System.out.println("Account creation successful");
+                try{
+                    FilePersistenceManager.saveUser(obj);
+                }
+                catch (IOException e){
+                    System.out.println("Unable to save new data!!");
+                }
                 return obj;
 
             } catch (NumberFormatException e) {

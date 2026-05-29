@@ -1,16 +1,23 @@
 package com.bank;
 import com.bank.command.*;
+import com.bank.persistence.FilePersistenceManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
 
 public class Main{
     public static void main(String[] args){
-
         HashMap<String, Account> accountRegistry = new HashMap<>();
         Account obj = null;
 
         boolean islogged = false;
+        try{
+            accountRegistry = FilePersistenceManager.loadData();
+        }
+        catch (IOException e){
+            System.out.println("Unable to load data!!");
+        }
 
         Scanner input  = new Scanner(System.in);
         String choice = "";
@@ -32,10 +39,16 @@ public class Main{
                 choice = input.next();
 
                 if(choice.equals("0")){
-                        System.out.println("Exiting ...");
-                        islogged = false;
-                        obj = null;
-                        choice = "0";
+                    System.out.println("Exiting ...");
+                    try{
+                        FilePersistenceManager.saveData(accountRegistry);
+                    }
+                    catch (IOException e){
+                        System.out.println("Unable to save all data!!");
+                    }
+                    islogged = false;
+                    obj = null;
+                    choice = "0";
                 }
                 else if(unauthMenu.containsKey(choice)){
                         obj = unauthMenu.get(choice).execute(accountRegistry, input, null);
@@ -55,6 +68,12 @@ public class Main{
 
                 if(choice.equals("0")) {
                     System.out.println("Exiting ...");
+                    try{
+                        FilePersistenceManager.saveData(accountRegistry);
+                    }
+                    catch (IOException e){
+                        System.out.println("Unable to save all data!!");
+                    }
                     islogged = false;
                     obj = null;
                 }
