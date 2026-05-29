@@ -1,4 +1,6 @@
 package com.bank;
+import com.bank.command.*;
+
 import java.util.Scanner;
 import java.util.HashMap;
 

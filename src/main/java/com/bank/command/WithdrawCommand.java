@@ -1,9 +1,14 @@
-package com.bank;
+package com.bank.command;
+
+import com.bank.Account;
+import com.bank.exception.InsufficientFundsException;
+import com.bank.exception.MaximumLimitReachedException;
+import com.bank.exception.NegativeFundsException;
 
 import java.util.Scanner;
 import java.util.HashMap;
 
-public class WithdrawCommand implements ATMCommand{
+public class WithdrawCommand implements ATMCommand {
 
     @Override
     public Account execute(HashMap<String, Account> registry, Scanner input, Account object) {
@@ -18,6 +23,12 @@ public class WithdrawCommand implements ATMCommand{
         }
         catch (InsufficientFundsException ife) {
             System.out.println("Kindly Withdraw money under balance limit ^_^");
+        }
+        catch (NegativeFundsException nfe) {
+            System.out.println("Kindly Withdraw money in positive value");
+        }
+        catch (MaximumLimitReachedException mlre) {
+            System.out.println("Kindly Withdraw money under per day maximum limit ^_^");
         }
         return object;
     }
