@@ -1,14 +1,11 @@
 package com.bank;
 import java.lang.String;
 
-class Account {
+public class Account {
 
     String name;
     private double balance;
 
-    Account(){
-        super();
-    }
     Account(String name, double balance){
         this.name = name;
         this.balance = balance;
