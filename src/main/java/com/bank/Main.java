@@ -1,13 +1,14 @@
 package com.bank;
 import com.bank.command.*;
 import com.bank.persistence.FilePersistenceManager;
+//import com.bank.test.AtmTask;
 
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.HashMap;
 
-public class Main{
-    public static void main(String[] args){
+public class Main extends Thread{
+    public static void main(String[] args) throws InterruptedException {
         HashMap<String, Account> accountRegistry = new HashMap<>();
         Account obj = null;
 
@@ -18,6 +19,17 @@ public class Main{
         catch (IOException e){
             System.out.println("Unable to load data!!");
         }
+//        Testing Race Condition
+//        Account acc = new Account("ROB", 20);
+//        AtmTask atm = new AtmTask(acc);
+//        Thread t1 = new Thread(atm);
+//        Thread t2 = new Thread(atm);
+//        t1.start();
+//        t2.start();
+//
+//        t1.join();
+//        t2.join();
+//        System.out.println("Final Balance: "+acc.showBalance());
 
         Scanner input  = new Scanner(System.in);
         String choice = "";
@@ -51,10 +63,10 @@ public class Main{
                     choice = "0";
                 }
                 else if(unauthMenu.containsKey(choice)){
-                        obj = unauthMenu.get(choice).execute(accountRegistry, input, null);
-                        if(obj!=null) {
-                            islogged = true;
-                        }
+                    obj = unauthMenu.get(choice).execute(accountRegistry, input, null);
+                    if(obj!=null) {
+                        islogged = true;
+                    }
                 }
                 else{
                     System.out.println("Invalid option!");

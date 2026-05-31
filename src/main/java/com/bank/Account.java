@@ -2,25 +2,53 @@ package com.bank;
 import com.bank.exception.*;
 
 import java.lang.String;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Account {
 
-    String name;
+    private String name;
     private double balance;
+    private String password;
     private static final double MAX_LIMIT = 50000;
+    private final ReentrantLock lock = new ReentrantLock();
 
-    public Account(String name, double balance){
+    public Account(){}
+    public Account(String name, String password, double balance){
         this.name = name;
+        this.password = password;
         this.balance = balance;
+    }
+
+    public String getName(){
+        return name;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public double getBalance(){
+        return balance;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setPassword(String password){
+        this.password = password;
+    }
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
+
+    public ReentrantLock getLock(){
+        return this.lock;
     }
 
     public double showBalance(){
         return this.balance;
     }
-    public void Withdraw(double amount){
-
+    public boolean Withdraw(double amount){
         if (amount >= 0 && amount < MAX_LIMIT && amount <= this.balance){
             this.balance -= amount;
+            return true;
         }
         else if(amount < 0){
             throw new NegativeFundsException("Balance is: "+ this.balance + " Withdrawal amount is in negative!!");
@@ -32,9 +60,10 @@ public class Account {
             throw new InsufficientFundsException("Balance is: "+ this.balance + " Withdrawal amount is greater than balance!!");
         }
     }
-    public void Deposit(double amount){
+    public boolean Deposit(double amount){
         if (amount >= 0 && amount < MAX_LIMIT){
             this.balance += amount;
+            return true;
         }
         else if(amount < 0){
             throw new NegativeFundsException("Balance is: "+ this.balance + " Deposit amount is in negative!!");
