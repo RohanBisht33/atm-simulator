@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="feb3eddc-7193-44df-b3a2-0c9bcacf7b26" name="Changes" comment="Feat &amp; Fix: Switch to Jackson JSON, add bcrypt hashing and thread safety&#10;&#10;- Replaced manual text parsing with Jackson JSON storage for data persistence.&#10;- Fixed ConcurrentModificationException by cloning the registry before saving.&#10;- Added a custom AccountSerializer to lock accounts safely during saving.&#10;- Integrated Spring Security's BCryptPasswordEncoder for secure password hashing.&#10;- Fixed runtime crash by adding the missing commons-logging dependency.&#10;- Fixed input loops by moving try-catch blocks inside the while-loops.&#10;- Added standard getters and setters to the Account class for Jackson mapping.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/persistence/DatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/persistence/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/CreateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/CreateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/DepositCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/DepositCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/LoginCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/WithdrawCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/WithdrawCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/persistence/AccountSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/persistence/AccountSerializer.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Exception" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;RohanBisht33&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/RohanBisht33/atm-simulator.git&quot;,
+    &quot;accountId&quot;: &quot;f9d9e9cd-16a3-4fd3-99ca-0ae606b81698&quot;
+  }
+}</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000000073" />
+      <entry key="S2" value="1.0004266142746736" />
+      <entry key="S5" value="1.0716849780178161" />
+      <entry key="S10" value="1.5304055032244404" />
+      <entry key="S30" value="4.363022284389958" />
+      <entry key="S60" value="7.116723632112821" />
+      <entry key="M2" value="9.52711930647179" />
+      <entry key="M5" value="13.001457430973376" />
+      <entry key="M10" value="17.885315768754737" />
+      <entry key="M15" value="21.557879955642882" />
+      <entry key="M30" value="30.715629108608432" />
+      <entry key="H1" value="49.868957905538295" />
+      <entry key="H2" value="86.32157996285119" />
+      <entry key="H4" value="162.87884622120936" />
+      <entry key="D1" value="426.542968782636" />
+      <entry key="W1" value="524.9440933072756" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.5258062732097882E-140" />
+      <entry key="S5" value="1.4353344027437475E-56" />
+      <entry key="S10" value="1.7492288306739378E-28" />
+      <entry key="S30" value="1.2298121664733761E-9" />
+      <entry key="S60" value="7.41832007250737E-5" />
+      <entry key="M2" value="0.01992644529199209" />
+      <entry key="M5" value="0.6014816382262136" />
+      <entry key="M10" value="1.8970951221134993" />
+      <entry key="M15" value="2.837892188474261" />
+      <entry key="M30" value="5.384426594092816" />
+      <entry key="H1" value="12.353961892566339" />
+      <entry key="H2" value="29.47379652427502" />
+      <entry key="H4" value="70.60451284537783" />
+      <entry key="D1" value="215.58054487176943" />
+      <entry key="W1" value="269.5593470794076" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="3.4188157272716204E-7" />
+      <entry key="MS500" value="0.05090672269189333" />
+      <entry key="S2" value="0.475394148754789" />
+      <entry key="S5" value="0.8121289598026756" />
+      <entry key="S10" value="1.3838509228182574" />
+      <entry key="S30" value="4.276968926878855" />
+      <entry key="S60" value="7.04667423136843" />
+      <entry key="M2" value="9.497712641701378" />
+      <entry key="M5" value="13.569640016906272" />
+      <entry key="M10" value="19.753300786438214" />
+      <entry key="M15" value="24.370138931679193" />
+      <entry key="M30" value="36.08074492873263" />
+      <entry key="H1" value="62.207518025549746" />
+      <entry key="H2" value="115.7819765754714" />
+      <entry key="H4" value="233.4702513429008" />
+      <entry key="D1" value="642.1175502427991" />
+      <entry key="W1" value="794.5023859873907" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="3ES5XaxHgHit0Mwt2phSFxIFDYz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/ai/Storage/atm-simulator/src/test/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.24374.151" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.24374.151" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="feb3eddc-7193-44df-b3a2-0c9bcacf7b26" name="Changes" comment="" />
+      <created>1780159174110</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780159174110</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Feat &amp; Fix: Switch to Jackson JSON, add bcrypt hashing and thread safety&#10;&#10;- Replaced manual text parsing with Jackson JSON storage for data persistence.&#10;- Fixed ConcurrentModificationException by cloning the registry before saving.&#10;- Added a custom AccountSerializer to lock accounts safely during saving.&#10;- Integrated Spring Security's BCryptPasswordEncoder for secure password hashing.&#10;- Fixed runtime crash by adding the missing commons-logging dependency.&#10;- Fixed input loops by moving try-catch blocks inside the while-loops.&#10;- Added standard getters and setters to the Account class for Jackson mapping.">
+      <option name="closed" value="true" />
+      <created>1780255451281</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1780255451283</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Feat &amp; Fix: Switch to Jackson JSON, add bcrypt hashing and thread safety&#10;&#10;- Replaced manual text parsing with Jackson JSON storage for data persistence.&#10;- Fixed ConcurrentModificationException by cloning the registry before saving.&#10;- Added a custom AccountSerializer to lock accounts safely during saving.&#10;- Integrated Spring Security's BCryptPasswordEncoder for secure password hashing.&#10;- Fixed runtime crash by adding the missing commons-logging dependency.&#10;- Fixed input loops by moving try-catch blocks inside the while-loops.&#10;- Added standard getters and setters to the Account class for Jackson mapping." />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat &amp; Fix: Switch to Jackson JSON, add bcrypt hashing and thread safety&#10;&#10;- Replaced manual text parsing with Jackson JSON storage for data persistence.&#10;- Fixed ConcurrentModificationException by cloning the registry before saving.&#10;- Added a custom AccountSerializer to lock accounts safely during saving.&#10;- Integrated Spring Security's BCryptPasswordEncoder for secure password hashing.&#10;- Fixed runtime crash by adding the missing commons-logging dependency.&#10;- Fixed input loops by moving try-catch blocks inside the while-loops.&#10;- Added standard getters and setters to the Account class for Jackson mapping." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,14 @@
+{
+  "RB" : {
+    "name" : "Rohan",
+    "userid" : "RB",
+    "password" : "$2a$10$rG2GXI1zhlr6BZDEi8OOz.ePnSo7e0Hi4SRz2ckBdc9PsknuaVj8u",
+    "balance" : 234.0
+  },
+  "Rohan" : {
+    "name" : "RB",
+    "userid" : "Rohan",
+    "password" : "$2a$10$Lt5osalKZz6v2HGzczTapO7JdZQnc5cYGsh29lrJGueyeRtZuE3Iq",
+    "balance" : 424.0
+  }
+}

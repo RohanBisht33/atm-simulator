@@ -1,6 +1,7 @@
 package com.bank;
 import com.bank.command.*;
 import com.bank.persistence.FilePersistenceManager;
+import com.bank.persistence.UserDAO;
 //import com.bank.test.AtmTask;
 
 import java.io.IOException;
@@ -13,12 +14,6 @@ public class Main extends Thread{
         Account obj = null;
 
         boolean islogged = false;
-        try{
-            accountRegistry = FilePersistenceManager.loadData();
-        }
-        catch (IOException e){
-            System.out.println("Unable to load data!!");
-        }
 //        Testing Race Condition
 //        Account acc = new Account("ROB", 20);
 //        AtmTask atm = new AtmTask(acc);
@@ -52,12 +47,6 @@ public class Main extends Thread{
 
                 if(choice.equals("0")){
                     System.out.println("Exiting ...");
-                    try{
-                        FilePersistenceManager.saveData(accountRegistry);
-                    }
-                    catch (IOException e){
-                        System.out.println("Unable to save all data!!");
-                    }
                     islogged = false;
                     obj = null;
                     choice = "0";
@@ -80,12 +69,6 @@ public class Main extends Thread{
 
                 if(choice.equals("0")) {
                     System.out.println("Exiting ...");
-                    try{
-                        FilePersistenceManager.saveData(accountRegistry);
-                    }
-                    catch (IOException e){
-                        System.out.println("Unable to save all data!!");
-                    }
                     islogged = false;
                     obj = null;
                 }

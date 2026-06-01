@@ -7,18 +7,22 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Account {
 
     private String name;
+    private String userid;
     private double balance;
     private String password;
     private static final double MAX_LIMIT = 50000;
     private final ReentrantLock lock = new ReentrantLock();
 
     public Account(){}
-    public Account(String name, String password, double balance){
+    public Account(String name, String userid, String password, double balance){
         this.name = name;
+        this.userid = userid;
         this.password = password;
         this.balance = balance;
     }
-
+    public String getUserid() {
+        return userid;
+    }
     public String getName(){
         return name;
     }
@@ -27,6 +31,9 @@ public class Account {
     }
     public double getBalance(){
         return balance;
+    }
+    public void setuserid(String userid) {
+        this.userid = userid;
     }
     public void setName(String name){
         this.name = name;
@@ -79,5 +86,6 @@ public class Account {
     public String toString() {
         return this.name + "," + this.balance;
     }
+
 }
 

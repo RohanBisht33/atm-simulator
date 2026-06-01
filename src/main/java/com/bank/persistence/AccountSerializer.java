@@ -21,6 +21,7 @@ public class AccountSerializer extends StdSerializer<Account> {
         try {
             gen.writeStartObject();
             gen.writeStringField("name", account.getName());
+            gen.writeStringField("userid", account.getUserid());
             gen.writeStringField("password", account.getPassword());
             gen.writeNumberField("balance", account.getBalance());
             gen.writeEndObject();
