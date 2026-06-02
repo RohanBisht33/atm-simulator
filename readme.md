@@ -1,62 +1,64 @@
-# ATM Simulator & Modular Backend Transaction Engine
+# ATM Simulator & Database-Backed Concurrent Transaction Engine
 
-An interactive, production-grade terminal banking application built from scratch in Java. This project goes beyond basic scripting mechanics to showcase strict object encapsulation, advanced design patterns, defensive exception boundaries, and automated testing lifecycles.
+An enterprise-grade, high-concurrency banking application built natively on Linux using core Java and PostgreSQL. This project showcases structural engineering paradigms including clean architectural layering, defensive exception boundaries, thread isolation parameters, and a pre-compiled relational data persistence engine.
 
-## 📦 What does this project do?
-This repository contains a centralized execution engine that runs an interactive **ATM Simulator Module** through a local terminal interface. 
+## 📦 Core Operational Domain
+The application bootstraps a centralized command-line interface (CLI) to process real-time financial workflows over a persistent database matrix:
+* **Relational Authentication:** Registers banking accounts and opens active, state-validated security sessions.
+* **ACID Transactions:** Executes thread-safe currency updates (`Withdraw`, `Deposit`) with precise mathematical evaluation.
+* **Deterministic Guardrails:** Employs immediate business-logic validation to intercept account overdrafts, adversarial inputs, and negative balances.
 
-### Core Features:
-* **User Authentication:** Systematically registers unique profiles and opens active, state-protected banking sessions.
-* **Atomic Transactions:** Processes real-time financial updates including balance checks, cash deposits, and withdrawals.
-* **Systemic Guardrails:** Deploys immediate error validation to block overdrafts, negative inputs, and numeric overflows.
+---
 
-## 🏗️ Architectural Key Highlights
-* **The Command Pattern Map:** Completely eradicates traditional, hardcoded `switch-case` loops. Every terminal action is isolated into a stateless Command class and registered in an in-memory `HashMap` for fast $O(1)$ dispatching.
-* **Custom Runtime Exceptions:** Utilizes a targeted exception tier extending `RuntimeException` to act as an immediate business-logic circuit breaker, protecting data state integrity without crashing the application thread.
+## 🏗️ Production-Grade Architectural Pillars
 
-## 🏗️ Architectural Core Pillars
+### 1. Persistent RDBMS Persistence Layer (The DAO Pattern)
+This project has transitioned completely away from loose, transient file tracking and temporary file serialization. It implements a robust **Data Access Object (DAO)** pattern managed by `UserDAO.java`.
+* **Normalized Database Schema:** Isolates raw credentials indexing (`users`) from operational finance ledger records (`accounts`) using relational foreign key bounds with explicit `ON DELETE CASCADE` constraints.
+* **SQL Injection Neutralization:** Queries utilize pre-compiled `PreparedStatement` boundaries. Every user parameter maps to strict value types (`?` placeholders), forcing the database engine to treat incoming metrics purely as literal strings rather than executable logic instructions.
+* **Resource Leak Protection:** Network sockets and server descriptors are wrapped inside defensive `try-with-resources` blocks. This ensures the Java Virtual Machine automatically triggers fundamental `.close()` sweeps to recycle active operating system file slots, even under sudden execution thread failures.
 
-### 1. Unified Workspace & Pluggable Domains
-Instead of building a standalone, isolated ATM application, this project uses a multi-module layout. The core framework handles the bootstrapping, while the ATM logic lives as a pluggable package. This means a developer can easily plug an entirely new application (like a Terminal Inventory Manager or a Library Catalog) directly into the framework without modifying any of the core codebase.
+### 2. High-Concurrency Concurrency Controls (Lock Contention Tuning)
+To protect transaction fields under multi-threaded client execution, state consistency is managed through explicit thread synchronization bounds:
+* **Critical Section Minimization:** Traditional thread blocking is bypassed by pulling slow blocking console I/O streams (`input.next()`) completely **outside** the synchronized critical window.
+* **Optimized Lock Acquisition:** Threads only acquire an account's `ReentrantLock` for the absolute split-second needed to execute binary state mutations and commit the fresh numerical totals straight to the persistent database on disk, dropping lock contention overhead to near zero.
 
-### 2. Eradicating Switch-Cases (The Command Pattern Map)
-In standard terminal applications, user input is typically passed through massive, hardcoded `switch` blocks or nested `if-else` loops. This project completely eliminates those loops to comply with clean coding standards:
-* Every user action (e.g., `Withdraw`, `Deposit`, `Logout`) is decoupled into its own independent, stateless **Command Class**.
-* All available commands are stored inside an in-memory **Command Registry Map**.
-* When a user types a command, the system retrieves it instantly with an optimized **$O(1)$ constant-time lookup**, making the terminal menu endlessly extensible when adding new operations.
+### 3. State Isolation & Security Architecture
+* **Strict Encapsulation Bounds:** Core entity properties (e.g., matching IDs, encrypted passkeys, and financial variables) are strictly protected inside private data fields accessible only via tightly regulated domain methods.
+* **Isolated Verification Paths:** To prevent dangerous object corruption traps, validation routines utilize state-isolation mechanics. User verification variables are processed in temporary instance spaces, preventing failed user verification loops from corrupting the active system memory state into an illegal null pointer.
 
-### 3. Strict Object Encapsulation & Memory Guardrails
-Data mutation paths are governed by rigid object isolation principles. State properties (e.g., identity metrics, ledger inputs, financial balances) are enforced with `private` visibility constraints. Memory pointers and reference leaks are strictly mitigated, ensuring that data states can only be altered via verified, atomic domain operations.
+### 4. Decoupled Command Pattern Map Dispatching
+Traditional, unmanageable code designs (such as long `switch-case` constructs or nested `if-else` loops) are completely avoided. 
+* Menu routes are isolated into standalone, stateless **Command Objects** implementing a common `ATMCommand` contract interface routing structure.
+* Navigation choices map straight into a centralized menu repository, enabling constant-time **$O(1)$ dispatch routing** and providing an architecture that is endlessly extensible when adding new domain operations.
 
-### 4. Self-Documenting Custom Exception Tier
-To prevent data corruption, the system implements an explicit defensive validation boundary. By extending `RuntimeException`, the workspace establishes a custom, self-documenting domain exception tier. These custom blocks function as instantaneous runtime **circuit breakers** that intercept adversarial parameters (e.g., numerical overflows, negative limits, state violations) and gracefully return control to the interface layer without crashing the execution thread.
-
-### 5. Automated Build & Verification Lifecycle
-Code stability is programmatically enforced using **JUnit 5** test suites executed directly via the **Maven build engine**. The testing layer maps out comprehensive path coverage, exercising boundary values and exception propagation parameters to validate system behavior under simulated architectural failure modes.
+### 5. Custom Exception Circuit-Breaker Tier
+Rather than relying on generic runtime alerts, the application applies highly targeted defensive validation bounds by extending `RuntimeException` (e.g., `InsufficientFundsException`, `NegativeFundsException`, `MinimumPasswordLengthException`). These custom exceptions function as immediate runtime **circuit breakers** that gracefully halt processing upon business-rule violations, preserving data integrity without crashing the master workspace thread.
 
 ---
 
 ## 📁 Repository Directory Layout
 
-The workspace strictly enforces standard enterprise layout conventions for clean separation of application logic and automated test suites:
+The codebase strictly enforces industry-standard software layer boundaries to completely decouple business logic from the persistence implementation:
 
 ```text
-├── pom.xml                        # Master Maven configuration & dependency tree
+├── pom.xml                     # Maven project descriptor & dependency configuration
 └── src
     ├── main
     │   └── java
     │       └── com
     │           └── bank
-    │                ├── command   # Command pattern & registry architecture
-    │                ├── persistence     # Encapsulated state object models
-    │                ├── security     # Encapsulated state object models
-    │                ├── exception # Custom runtime circuit breaker tier
-    │                └── Main.java  # Workspace bootstrap & execution loop
+    │               ├── command        # Command Pattern interface modules (Login, Create, Withdraw, Deposit)
+    │               ├── exception      # Custom business-rule validation circuit breakers
+    │               ├── persistence    # DatabaseManager connection engine & UserDAO persistence layer
+    │               ├── security       # SecurityService password hash processing layers
+    │               ├── Account.java   # Strictly encapsulated, thread-locked domain entity model
+    │               └── Main.java      # Framework master bootstrap execution loop
     └── test
         └── java
             └── com
                 └── bank
-                    └── test           # JUnit 5 automated test verification suites
+                    └── test           # JUnit automated verification validation suites
 ```
 ****🛠️ Compilation & Local Execution****
 This workspace is designed to be managed natively within a clean terminal environment (such as a Linux terminal layout) utilizing raw developer utilities without relying on IDE automation crutches.
@@ -73,5 +75,5 @@ To bootstrap the primary application workspace framework and open the interactiv
 
 Bash
 ```
-mvn exec:java -Dexec.mainClass="com.framework.core.Main"
+mvn exec:java -Dexec.mainClass="com.bank.Main"
 ```
