@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feb3eddc-7193-44df-b3a2-0c9bcacf7b26" name="Changes" comment="Feat &amp; Fix: Switch to Jackson JSON, add bcrypt hashing and thread safety&#10;&#10;- Replaced manual text parsing with Jackson JSON storage for data persistence.&#10;- Fixed ConcurrentModificationException by cloning the registry before saving.&#10;- Added a custom AccountSerializer to lock accounts safely during saving.&#10;- Integrated Spring Security's BCryptPasswordEncoder for secure password hashing.&#10;- Fixed runtime crash by adding the missing commons-logging dependency.&#10;- Fixed input loops by moving try-catch blocks inside the while-loops.&#10;- Added standard getters and setters to the Account class for Jackson mapping.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/persistence/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bank/persistence/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/CreateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/CreateCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/DepositCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/DepositCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/LoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/command/WithdrawCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/command/WithdrawCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bank/persistence/AccountSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bank/persistence/AccountSerializer.java" afterDir="false" />
+    <list default="true" id="feb3eddc-7193-44df-b3a2-0c9bcacf7b26" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,61 +37,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000000000073" />
-      <entry key="S2" value="1.0004266142746736" />
-      <entry key="S5" value="1.0716849780178161" />
-      <entry key="S10" value="1.5304055032244404" />
-      <entry key="S30" value="4.363022284389958" />
-      <entry key="S60" value="7.116723632112821" />
-      <entry key="M2" value="9.52711930647179" />
-      <entry key="M5" value="13.001457430973376" />
-      <entry key="M10" value="17.885315768754737" />
-      <entry key="M15" value="21.557879955642882" />
-      <entry key="M30" value="30.715629108608432" />
-      <entry key="H1" value="49.868957905538295" />
-      <entry key="H2" value="86.32157996285119" />
-      <entry key="H4" value="162.87884622120936" />
-      <entry key="D1" value="426.542968782636" />
-      <entry key="W1" value="524.9440933072756" />
+      <entry key="MS100" value="1.0791580945035006" />
+      <entry key="MS500" value="1.8785290596576991" />
+      <entry key="S2" value="3.55500043730361" />
+      <entry key="S5" value="5.943156536341459" />
+      <entry key="S10" value="9.405983591037943" />
+      <entry key="S30" value="17.15021661156046" />
+      <entry key="S60" value="22.36744111269258" />
+      <entry key="M2" value="26.671488133805255" />
+      <entry key="M5" value="31.615635075859586" />
+      <entry key="M10" value="37.04136532402329" />
+      <entry key="M15" value="40.92125263133197" />
+      <entry key="M30" value="50.306329632390906" />
+      <entry key="H1" value="69.5699710103489" />
+      <entry key="H2" value="106.0824799996666" />
+      <entry key="H4" value="182.66525700615375" />
+      <entry key="D1" value="446.4533874016236" />
+      <entry key="W1" value="544.9284174325686" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.5258062732097882E-140" />
-      <entry key="S5" value="1.4353344027437475E-56" />
-      <entry key="S10" value="1.7492288306739378E-28" />
-      <entry key="S30" value="1.2298121664733761E-9" />
-      <entry key="S60" value="7.41832007250737E-5" />
-      <entry key="M2" value="0.01992644529199209" />
-      <entry key="M5" value="0.6014816382262136" />
-      <entry key="M10" value="1.8970951221134993" />
-      <entry key="M15" value="2.837892188474261" />
-      <entry key="M30" value="5.384426594092816" />
-      <entry key="H1" value="12.353961892566339" />
-      <entry key="H2" value="29.47379652427502" />
-      <entry key="H4" value="70.60451284537783" />
-      <entry key="D1" value="215.58054487176943" />
-      <entry key="W1" value="269.5593470794076" />
+      <entry key="S2" value="2.2034805757300367E-144" />
+      <entry key="S5" value="4.17635133474631E-58" />
+      <entry key="S10" value="2.9837923270341243E-29" />
+      <entry key="S30" value="6.820445985369619E-10" />
+      <entry key="S60" value="5.5244947081893285E-5" />
+      <entry key="M2" value="0.017195837339625528" />
+      <entry key="M5" value="0.5670479344340398" />
+      <entry key="M10" value="1.84199228471338" />
+      <entry key="M15" value="2.78266991221292" />
+      <entry key="M30" value="5.331781708524006" />
+      <entry key="H1" value="12.293419657218491" />
+      <entry key="H2" value="29.40148769336167" />
+      <entry key="H4" value="70.5178517176995" />
+      <entry key="D1" value="215.53642112247823" />
+      <entry key="W1" value="269.55146470069064" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.4188157272716204E-7" />
-      <entry key="MS500" value="0.05090672269189333" />
-      <entry key="S2" value="0.475394148754789" />
-      <entry key="S5" value="0.8121289598026756" />
-      <entry key="S10" value="1.3838509228182574" />
-      <entry key="S30" value="4.276968926878855" />
-      <entry key="S60" value="7.04667423136843" />
-      <entry key="M2" value="9.497712641701378" />
-      <entry key="M5" value="13.569640016906272" />
-      <entry key="M10" value="19.753300786438214" />
-      <entry key="M15" value="24.370138931679193" />
-      <entry key="M30" value="36.08074492873263" />
-      <entry key="H1" value="62.207518025549746" />
-      <entry key="H2" value="115.7819765754714" />
-      <entry key="H4" value="233.4702513429008" />
-      <entry key="D1" value="642.1175502427991" />
-      <entry key="W1" value="794.5023859873907" />
+      <entry key="MS100" value="0.9803522265606551" />
+      <entry key="MS500" value="1.8444718927619406" />
+      <entry key="S2" value="3.5391591145674424" />
+      <entry key="S5" value="5.922011535240759" />
+      <entry key="S10" value="9.364125907431582" />
+      <entry key="S30" value="17.088916126539132" />
+      <entry key="S60" value="22.306602155962807" />
+      <entry key="M2" value="26.64119632149153" />
+      <entry key="M5" value="32.14916919035396" />
+      <entry key="M10" value="38.854005167064656" />
+      <entry key="M15" value="43.678056694431355" />
+      <entry key="M30" value="55.61862053555798" />
+      <entry key="H1" value="81.84787916861941" />
+      <entry key="H2" value="135.47050785612328" />
+      <entry key="H4" value="253.16997063961676" />
+      <entry key="D1" value="661.9838385846546" />
+      <entry key="W1" value="814.4788266577174" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -174,7 +165,111 @@
       <option name="project" value="LOCAL" />
       <updated>1780255451283</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(persistence): integrate PostgreSQL database layer and optimize concurrency&quot; -m &quot;- Replace file-based persistence with UserDAO data access layer.&#10;- Implement JDBC connection engine via DatabaseManager using PostgreSQL.&#10;- Prevent SQL injection vulnerabilities using pre-compiled PreparedStatements.&#10;- Eliminate critical section thread-blocking I/O by shifting console prompts outside ReentrantLocks.&#10;- Fix wrong-password NullPointerException loop recursion bug using state isolation.&quot;">
+      <option name="closed" value="true" />
+      <created>1780341968317</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780341968321</updated>
+    </task>
+    <task id="LOCAL-00003" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817791251</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817791252</updated>
+    </task>
+    <task id="LOCAL-00004" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817798526</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817798526</updated>
+    </task>
+    <task id="LOCAL-00005" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817799271</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817799271</updated>
+    </task>
+    <task id="LOCAL-00006" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817835337</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817835337</updated>
+    </task>
+    <task id="LOCAL-00007" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817836155</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817836155</updated>
+    </task>
+    <task id="LOCAL-00008" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817842972</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817842972</updated>
+    </task>
+    <task id="LOCAL-00009" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817843742</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817843742</updated>
+    </task>
+    <task id="LOCAL-00010" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817844360</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817844360</updated>
+    </task>
+    <task id="LOCAL-00011" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817855299</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817855299</updated>
+    </task>
+    <task id="LOCAL-00012" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817871178</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817871178</updated>
+    </task>
+    <task id="LOCAL-00013" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817871968</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817871968</updated>
+    </task>
+    <task id="LOCAL-00014" summary="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude">
+      <option name="closed" value="true" />
+      <created>1780817872478</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1780817872478</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +277,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Feat &amp; Fix: Switch to Jackson JSON, add bcrypt hashing and thread safety&#10;&#10;- Replaced manual text parsing with Jackson JSON storage for data persistence.&#10;- Fixed ConcurrentModificationException by cloning the registry before saving.&#10;- Added a custom AccountSerializer to lock accounts safely during saving.&#10;- Integrated Spring Security's BCryptPasswordEncoder for secure password hashing.&#10;- Fixed runtime crash by adding the missing commons-logging dependency.&#10;- Fixed input loops by moving try-catch blocks inside the while-loops.&#10;- Added standard getters and setters to the Account class for Jackson mapping." />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat &amp; Fix: Switch to Jackson JSON, add bcrypt hashing and thread safety&#10;&#10;- Replaced manual text parsing with Jackson JSON storage for data persistence.&#10;- Fixed ConcurrentModificationException by cloning the registry before saving.&#10;- Added a custom AccountSerializer to lock accounts safely during saving.&#10;- Integrated Spring Security's BCryptPasswordEncoder for secure password hashing.&#10;- Fixed runtime crash by adding the missing commons-logging dependency.&#10;- Fixed input loops by moving try-catch blocks inside the while-loops.&#10;- Added standard getters and setters to the Account class for Jackson mapping." />
+    <MESSAGE value="feat(persistence): integrate PostgreSQL database layer and optimize concurrency&quot; -m &quot;- Replace file-based persistence with UserDAO data access layer.&#10;- Implement JDBC connection engine via DatabaseManager using PostgreSQL.&#10;- Prevent SQL injection vulnerabilities using pre-compiled PreparedStatements.&#10;- Eliminate critical section thread-blocking I/O by shifting console prompts outside ReentrantLocks.&#10;- Fix wrong-password NullPointerException loop recursion bug using state isolation.&quot;" />
+    <MESSAGE value="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude" />
+    <option name="LAST_COMMIT_MESSAGE" value="A complete documentation on this project: ATM_Simulator_Complete_Documentation...Powered by Claude" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
